@@ -1,14 +1,32 @@
-package com.example.leitor_json.dto;
+package com.example.leitor_json.model;
 
-public class ArquivoDTO {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "arquivo")
+public class Arquivo implements Serializable {
+
+    @Id
     private Double idArquivo;
+
     private String nome;
+
     private String url;
+
     private String tipo;
+
     private String codTipo;
+
     private String fullFilePath;
+
     private String fileInputStream;
+
     private String fileByteArray;
+
+    @JoinColumn(name = "idCandidato", referencedColumnName = "id")
+    @ManyToOne
+    private Candidato idCandidato;
 
     public Double getIdArquivo() {
         return idArquivo;
@@ -72,5 +90,13 @@ public class ArquivoDTO {
 
     public void setFileByteArray(String fileByteArray) {
         this.fileByteArray = fileByteArray;
+    }
+
+    public Candidato getIdCandidato() {
+        return idCandidato;
+    }
+
+    public void setIdCandidato(Candidato idCandidato) {
+        this.idCandidato = idCandidato;
     }
 }

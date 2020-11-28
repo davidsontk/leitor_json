@@ -1,8 +1,11 @@
 package com.example.leitor_json.service;
 
 import com.example.leitor_json.dto.CandidatoDTO;
+import com.example.leitor_json.model.Eleicao;
+import com.example.leitor_json.repository.EleicaoRepository;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -12,6 +15,9 @@ import java.util.List;
 
 @Service
 public class LeitorJSONService {
+
+    @Autowired
+    EleicaoRepository eleicaoRepository;
 
     public void lerDadosDoArquivoJSON() {
         try {
@@ -27,10 +33,17 @@ public class LeitorJSONService {
                     listaCandidatos.add(candidatoDTO);
                 }
             }
+            this.popularBanco(listaCandidatos);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    public void popularBanco(List<CandidatoDTO> listaCandidatos) {
+        Eleicao eleicao = new Eleicao();
+        eleicao.setAno(listaCandidatos.get(0).getEleicao().getAno());
+        eleicao.setId(listaCandidatos.get(0).getEleicao().getId());
+        eleicaoRepository.save(eleicao);
 
     }
 }

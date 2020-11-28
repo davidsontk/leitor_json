@@ -1,17 +1,40 @@
-package com.example.leitor_json.dto;
+package com.example.leitor_json.model;
 
-public class EleicaoAnteriorDTO {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "eleicaoAnterior")
+public class EleicaoAnterior implements Serializable {
+
+    @Id
     private String id;
+
     private Integer nrAno;
+
     private String nomeUrna;
+
     private String nomeCandidato;
-    private String idEleicao;
+
+    @JoinColumn(name="idEleicao", referencedColumnName = "id")
+    @ManyToOne
+    private Eleicao idEleicao;
+
     private String sgUe;
+
     private String local;
+
     private String cargo;
+
     private String partido;
+
     private String situacaoTotalizacao;
+
     private String txLink;
+
+    @JoinColumn(name = "idCandidato", referencedColumnName = "id")
+    @ManyToOne
+    private Candidato idCandidato;
 
     public String getId() {
         return id;
@@ -45,11 +68,11 @@ public class EleicaoAnteriorDTO {
         this.nomeCandidato = nomeCandidato;
     }
 
-    public String getIdEleicao() {
+    public Eleicao getIdEleicao() {
         return idEleicao;
     }
 
-    public void setIdEleicao(String idEleicao) {
+    public void setIdEleicao(Eleicao idEleicao) {
         this.idEleicao = idEleicao;
     }
 
@@ -99,5 +122,13 @@ public class EleicaoAnteriorDTO {
 
     public void setTxLink(String txLink) {
         this.txLink = txLink;
+    }
+
+    public Candidato getIdCandidato() {
+        return idCandidato;
+    }
+
+    public void setIdCandidato(Candidato idCandidato) {
+        this.idCandidato = idCandidato;
     }
 }
