@@ -1,8 +1,6 @@
 package com.example.leitor_json.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -10,6 +8,7 @@ import java.io.Serializable;
 public class Partido implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private Integer numero;

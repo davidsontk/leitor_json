@@ -7,8 +7,9 @@ import java.io.Serializable;
 @Table(name = "arquivo")
 public class Arquivo implements Serializable {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Double idArquivo;
+    private String idArquivo;
 
     private String nome;
 
@@ -28,11 +29,11 @@ public class Arquivo implements Serializable {
     @ManyToOne
     private Candidato idCandidato;
 
-    public Double getIdArquivo() {
+    public String getIdArquivo() {
         return idArquivo;
     }
 
-    public void setIdArquivo(Double idArquivo) {
+    public void setIdArquivo(String idArquivo) {
         this.idArquivo = idArquivo;
     }
 

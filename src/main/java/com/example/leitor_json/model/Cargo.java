@@ -1,9 +1,6 @@
 package com.example.leitor_json.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -11,27 +8,19 @@ import java.io.Serializable;
 public class Cargo implements Serializable {
 
     @Id
-    private Integer id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
     private String sigla;
 
     private String nome;
 
+    @Column(name = "cod_superior")
     private String codSuperior;
 
     private Boolean titular;
 
     private Integer contagem;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getCodigo() {
         return codigo;

@@ -1,8 +1,6 @@
 package com.example.leitor_json.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,30 +8,40 @@ import java.util.Date;
 @Table(name = "eleicao")
 public class Eleicao implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name="sigla_UF")
     private String siglaUF;
 
+    @Column(name="localidade_Sg_Ue")
     private String localidadeSgUe;
 
     private Integer ano;
 
     private String codigo;
 
+    @Column(name="nome_eleicao")
     private String nomeEleicao;
 
+    @Column(name="tipo_eleicao")
     private String tipoEleicao;
 
     private String turno;
 
+    @Column(name="tipo_abrangencia")
     private String tipoAbrangencia;
 
+    @Column(name="data_eleicao")
     private Date dataEleicao;
 
+    @Column(name="cod_situacao_eleicao")
     private Integer codSituacaoEleicao;
 
+    @Column(name="descricao_situacao_eleicao")
     private String descricaoSituacaoEleicao;
 
+    @Column(name="descricao_eleicao")
     private String descricaoEleicao;
 
     public Integer getId() {

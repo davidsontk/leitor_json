@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class CandidatoDTO {
-    private Double id;
+    private String id;
     private String nomeUrna;
     private Integer numero;
     private Integer idCandidatoSuperior;
@@ -71,11 +71,11 @@ public class CandidatoDTO {
     private Boolean st_DIVULGA;
     private Boolean st_REELEICAO;
 
-    public Double getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(String id) {
         this.id = id;
     }
 

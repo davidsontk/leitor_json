@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class SiteCandidato implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @JoinColumn(name = "idCandidato", referencedColumnName = "id")

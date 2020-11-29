@@ -9,40 +9,56 @@ import java.util.Date;
 public class Vice implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name="nome_coligacao")
     private String nomeColigacao;
 
+    @Column(name="composicao_coligacao")
     private String composicaoColigacao;
 
+    @Column(name="st_registro")
     private Boolean stRegistro;
 
+    @Column(name="situacao_candidato")
     private String situacaoCandidato;
 
+    @Column(name="url_foto")
     private String urlFoto;
 
+    @Column(name="sg_partido")
     private String sgPartido;
 
+    @Column(name="nm_urna")
     private String nmUrna;
 
+    @Column(name="nm_candidato")
     private String nmCandidato;
 
     @ManyToOne
-    @JoinColumn(name = "sqEleicao", referencedColumnName = "id")
+    @JoinColumn(name = "sq_eleicao", referencedColumnName = "id")
     private Eleicao sqEleicao;
 
+    @Column(name="sq_candidato_superior")
     private Integer sqCandidatoSuperior;
 
+    @Column(name="nr_candidato")
     private String nrCandidato;
 
+    @Column(name="ds_cargo")
     private String dsCargo;
 
+    @Column(name="nm_partido")
     private String nmPartido;
 
+    @Column(name="sq_candidato")
     private String sqCandidato;
 
+    @Column(name="sg_ue")
     private String sgUE;
 
+    @Column(name="data_ultima_atualizacao")
     private Date dataUltimaAtualizacao;
 
     public String getNomeColigacao() {

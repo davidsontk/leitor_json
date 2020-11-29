@@ -1,7 +1,10 @@
 package com.example.leitor_json.service;
 
+import com.example.leitor_json.dto.BemDTO;
 import com.example.leitor_json.dto.CandidatoDTO;
+import com.example.leitor_json.model.Bem;
 import com.example.leitor_json.model.Eleicao;
+import com.example.leitor_json.repository.BemRepository;
 import com.example.leitor_json.repository.EleicaoRepository;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -18,6 +21,9 @@ public class LeitorJSONService {
 
     @Autowired
     EleicaoRepository eleicaoRepository;
+
+    @Autowired
+    BemRepository bemRepository;
 
     public void lerDadosDoArquivoJSON() {
         try {
@@ -40,10 +46,15 @@ public class LeitorJSONService {
     }
 
     public void popularBanco(List<CandidatoDTO> listaCandidatos) {
-        Eleicao eleicao = new Eleicao();
-        eleicao.setAno(listaCandidatos.get(0).getEleicao().getAno());
-        eleicao.setId(listaCandidatos.get(0).getEleicao().getId());
-        eleicaoRepository.save(eleicao);
+        for(BemDTO bemAux: listaCandidatos.get(0).getBens()){
+            Bem bem = new Bem();
+            bem.setOrdem(bemAux.getOrdem());
+            bem.setValor(bemAux.getValor());
+            bem.setDataUltimaAtualizacao(bemAux.getDataUltimaAtualizacao());
+            bem.setDescricao(bemAux.getDescricao());
+            bem.setDescricaoDeTipoDeBem(bemAux.getDescricaoDeTipoDeBem());
+            bemRepository.save(bem);
+        }
 
     }
 }

@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class EleicaoAnterior implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private Integer nrAno;
