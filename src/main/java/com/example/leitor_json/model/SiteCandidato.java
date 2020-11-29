@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "siteCandidato")
+@Table(name = "site_candidato")
 public class SiteCandidato implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JoinColumn(name = "idCandidato", referencedColumnName = "id")
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id")
     @ManyToOne
     private Candidato idCandidato;
 

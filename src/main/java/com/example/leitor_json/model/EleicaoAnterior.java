@@ -4,23 +4,27 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "eleicaoAnterior")
+@Table(name = "eleicao_anterior")
 public class EleicaoAnterior implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
+    @Column(name="nr_ano")
     private Integer nrAno;
 
+    @Column(name="nome_urna")
     private String nomeUrna;
 
+    @Column(name="nome_candidato")
     private String nomeCandidato;
 
-    @JoinColumn(name="idEleicao", referencedColumnName = "id")
+    @JoinColumn(name="id_eleicao", referencedColumnName = "id")
     @ManyToOne
     private Eleicao idEleicao;
 
+    @Column(name="sg_ue")
     private String sgUe;
 
     private String local;
@@ -29,11 +33,13 @@ public class EleicaoAnterior implements Serializable {
 
     private String partido;
 
+    @Column(name="situacao_totalizacao")
     private String situacaoTotalizacao;
 
+    @Column(name="tx_link")
     private String txLink;
 
-    @JoinColumn(name = "idCandidato", referencedColumnName = "id")
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id")
     @ManyToOne
     private Candidato idCandidato;
 

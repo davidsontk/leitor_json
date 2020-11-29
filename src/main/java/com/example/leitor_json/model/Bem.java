@@ -24,7 +24,7 @@ public class Bem implements Serializable {
     @Column(name = "data_ultima_atualizacao")
     private Date dataUltimaAtualizacao;
 
-    @JoinColumn(name = "idCandidato", referencedColumnName = "id")
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id")
     @ManyToOne
     private Candidato idCandidato;
 

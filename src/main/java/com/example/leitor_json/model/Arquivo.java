@@ -9,7 +9,7 @@ public class Arquivo implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private String idArquivo;
+    private String id;
 
     private String nome;
 
@@ -17,24 +17,28 @@ public class Arquivo implements Serializable {
 
     private String tipo;
 
+    @Column(name="cod_tipo")
     private String codTipo;
 
+    @Column(name="full_file_path")
     private String fullFilePath;
 
+    @Column(name="file_input_stream")
     private String fileInputStream;
 
+    @Column(name="file_byte_array")
     private String fileByteArray;
 
-    @JoinColumn(name = "idCandidato", referencedColumnName = "id")
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id")
     @ManyToOne
     private Candidato idCandidato;
 
-    public String getIdArquivo() {
-        return idArquivo;
+    public String getId() {
+        return id;
     }
 
-    public void setIdArquivo(String idArquivo) {
-        this.idArquivo = idArquivo;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {
