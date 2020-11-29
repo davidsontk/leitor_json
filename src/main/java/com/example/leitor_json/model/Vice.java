@@ -40,8 +40,9 @@ public class Vice implements Serializable {
     @JoinColumn(name = "sq_eleicao", referencedColumnName = "id")
     private Eleicao sqEleicao;
 
-    @Column(name="sq_candidato_superior")
-    private Integer sqCandidatoSuperior;
+    @JoinColumn(name = "sq_candidato_superior", referencedColumnName = "id")
+    @ManyToOne
+    private Candidato sqCandidatoSuperior;
 
     @Column(name="nr_candidato")
     private String nrCandidato;
@@ -60,6 +61,10 @@ public class Vice implements Serializable {
 
     @Column(name="data_ultima_atualizacao")
     private Date dataUltimaAtualizacao;
+
+    @JoinColumn(name = "id_candidato_principal", referencedColumnName = "id")
+    @ManyToOne
+    private Candidato idCandidatoPrincipal;
 
     public String getNomeColigacao() {
         return nomeColigacao;
@@ -141,11 +146,11 @@ public class Vice implements Serializable {
         this.sqEleicao = sqEleicao;
     }
 
-    public Integer getSqCandidatoSuperior() {
+    public Candidato getSqCandidatoSuperior() {
         return sqCandidatoSuperior;
     }
 
-    public void setSqCandidatoSuperior(Integer sqCandidatoSuperior) {
+    public void setSqCandidatoSuperior(Candidato sqCandidatoSuperior) {
         this.sqCandidatoSuperior = sqCandidatoSuperior;
     }
 
@@ -195,5 +200,13 @@ public class Vice implements Serializable {
 
     public void setDataUltimaAtualizacao(Date dataUltimaAtualizacao) {
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+    }
+
+    public Candidato getIdCandidatoPrincipal() {
+        return idCandidatoPrincipal;
+    }
+
+    public void setIdCandidatoPrincipal(Candidato idCandidatoPrincipal) {
+        this.idCandidatoPrincipal = idCandidatoPrincipal;
     }
 }

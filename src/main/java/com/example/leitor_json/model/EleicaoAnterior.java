@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class EleicaoAnterior implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @Column(name="nr_ano")

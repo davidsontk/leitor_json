@@ -75,5 +75,13 @@ public class Bem implements Serializable {
     public void setDataUltimaAtualizacao(Date dataUltimaAtualizacao) {
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
     }
+
+    public Candidato getIdCandidato() {
+        return idCandidato;
+    }
+
+    public void setIdCandidato(Candidato idCandidato) {
+        this.idCandidato = idCandidato;
+    }
 }
 

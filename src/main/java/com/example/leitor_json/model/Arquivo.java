@@ -7,7 +7,6 @@ import java.io.Serializable;
 @Table(name = "arquivo")
 public class Arquivo implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private String id;
 

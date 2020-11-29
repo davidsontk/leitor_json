@@ -8,7 +8,6 @@ import java.util.Date;
 @Table(name = "candidato")
 public class Candidato implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private String id;
 
@@ -51,10 +50,10 @@ public class Candidato implements Serializable {
 
     private String ocupacao;
 
-    @Column(name="gasto_campanha_1T")
+    @Column(name="gasto_campanha_1t")
     private Float gastoCampanha1T;
 
-    @Column(name="gasto_campanha_2T")
+    @Column(name="gasto_campanha_2t")
     private Float gastoCampanha2T;
 
     @Column(name="sg_uf_nascimento")
@@ -73,7 +72,7 @@ public class Candidato implements Serializable {
     private String ufSuperiorCandidatura;
 
     @Column(name="data_ultima_atualizacao")
-    private String dataUltimaAtualizacao;
+    private Date dataUltimaAtualizacao;
 
     @Column(name="foto_url")
     private String fotoUrl;
@@ -118,11 +117,7 @@ public class Candidato implements Serializable {
     @Column(name="total_de_bens")
     private Float totalDeBens;
 
-    @JoinColumn(name = "vice", referencedColumnName = "id")
-    @ManyToOne
-    private Candidato vice;
-
-    @JoinColumn(name = "id_partido", referencedColumnName = "id")
+    @JoinColumn(name = "id_partido", referencedColumnName = "numero")
     @ManyToOne
     private Partido idPartido;
 
@@ -130,7 +125,9 @@ public class Candidato implements Serializable {
     @ManyToOne
     private Eleicao idEleicao;
 
-    private String substituto;
+    @JoinColumn(name = "substituto", referencedColumnName = "id")
+    @ManyToOne
+    private Substituto substituto;
 
     private String motivos;
 
@@ -364,11 +361,11 @@ public class Candidato implements Serializable {
         this.ufSuperiorCandidatura = ufSuperiorCandidatura;
     }
 
-    public String getDataUltimaAtualizacao() {
+    public Date getDataUltimaAtualizacao() {
         return dataUltimaAtualizacao;
     }
 
-    public void setDataUltimaAtualizacao(String dataUltimaAtualizacao) {
+    public void setDataUltimaAtualizacao(Date dataUltimaAtualizacao) {
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
     }
 
@@ -484,14 +481,6 @@ public class Candidato implements Serializable {
         this.totalDeBens = totalDeBens;
     }
 
-    public Candidato getVice() {
-        return vice;
-    }
-
-    public void setVice(Candidato vice) {
-        this.vice = vice;
-    }
-
     public Partido getIdPartido() {
         return idPartido;
     }
@@ -508,11 +497,11 @@ public class Candidato implements Serializable {
         this.idEleicao = idEleicao;
     }
 
-    public String getSubstituto() {
+    public Substituto getSubstituto() {
         return substituto;
     }
 
-    public void setSubstituto(String substituto) {
+    public void setSubstituto(Substituto substituto) {
         this.substituto = substituto;
     }
 

@@ -27,7 +27,7 @@ public class CandidatoDTO {
     private String localCandidatura;
     private String ufCandidatura;
     private String ufSuperiorCandidatura;
-    private String dataUltimaAtualizacao;
+    private Date dataUltimaAtualizacao;
     private String fotoUrl;
     private Date fotoDataUltimaAtualizacao;
     private String descricaoTotalizacao;
@@ -50,8 +50,8 @@ public class CandidatoDTO {
     private List<String> sites = new ArrayList<>();
     private List<ArquivoDTO> arquivos = new ArrayList<>();
     private List<EleicaoAnteriorDTO> eleicoesAnteriores = new ArrayList<>();
-    private String substituto;
-    private String motivos;
+    private SubstitutoDTO substituto;
+    private List<String> motivos= new ArrayList<>();
     private Integer codigoSituacaoCandidato;
     private String descricaoSituacaoCandidato;
     private Boolean st_SUBSTITUIDO;
@@ -247,11 +247,11 @@ public class CandidatoDTO {
         this.ufSuperiorCandidatura = ufSuperiorCandidatura;
     }
 
-    public String getDataUltimaAtualizacao() {
+    public Date getDataUltimaAtualizacao() {
         return dataUltimaAtualizacao;
     }
 
-    public void setDataUltimaAtualizacao(String dataUltimaAtualizacao) {
+    public void setDataUltimaAtualizacao(Date dataUltimaAtualizacao) {
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
     }
 
@@ -431,19 +431,19 @@ public class CandidatoDTO {
         this.eleicoesAnteriores = eleicoesAnteriores;
     }
 
-    public String getSubstituto() {
+    public SubstitutoDTO getSubstituto() {
         return substituto;
     }
 
-    public void setSubstituto(String substituto) {
+    public void setSubstituto(SubstitutoDTO substituto) {
         this.substituto = substituto;
     }
 
-    public String getMotivos() {
+    public List<String> getMotivos() {
         return motivos;
     }
 
-    public void setMotivos(String motivos) {
+    public void setMotivos(List<String> motivos) {
         this.motivos = motivos;
     }
 

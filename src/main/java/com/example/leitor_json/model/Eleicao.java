@@ -8,8 +8,7 @@ import java.util.Date;
 @Table(name = "eleicao")
 public class Eleicao implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name="sigla_UF")
     private String siglaUF;
@@ -44,11 +43,11 @@ public class Eleicao implements Serializable {
     @Column(name="descricao_eleicao")
     private String descricaoEleicao;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

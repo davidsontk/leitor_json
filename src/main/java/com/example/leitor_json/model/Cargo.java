@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class Cargo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
     private String sigla;
@@ -16,7 +15,7 @@ public class Cargo implements Serializable {
     private String nome;
 
     @Column(name = "cod_superior")
-    private String codSuperior;
+    private Integer codSuperior;
 
     private Boolean titular;
 
@@ -46,11 +45,11 @@ public class Cargo implements Serializable {
         this.nome = nome;
     }
 
-    public String getCodSuperior() {
+    public Integer getCodSuperior() {
         return codSuperior;
     }
 
-    public void setCodSuperior(String codSuperior) {
+    public void setCodSuperior(Integer codSuperior) {
         this.codSuperior = codSuperior;
     }
 

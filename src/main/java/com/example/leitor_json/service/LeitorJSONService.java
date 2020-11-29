@@ -25,9 +25,11 @@ public class LeitorJSONService {
     @Autowired
     BemRepository bemRepository;
 
+    @Autowired
+    BancoService bancoService;
+
     public void lerDadosDoArquivoJSON() {
         try {
-            List<CandidatoDTO> listaCandidatos = new ArrayList<>();
             File diretorio = new File("./src/main/resources/static");
             if (diretorio.isDirectory()) {
                 File arquivos[] = diretorio.listFiles();
@@ -35,26 +37,18 @@ public class LeitorJSONService {
                     CandidatoDTO candidatoDTO = null;
                     Gson gson = new Gson();
                     JsonReader reader = new JsonReader(new FileReader(arquivo));
+                    System.out.println("COLOCANDO ARQUIVO COM O NOME = " + arquivo.getName());
                     candidatoDTO = gson.fromJson(reader, CandidatoDTO.class);
-                    listaCandidatos.add(candidatoDTO);
+                    this.popularBanco(candidatoDTO);
                 }
+                System.out.println("Todos os inserts foram concluídos");
             }
-            this.popularBanco(listaCandidatos);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void popularBanco(List<CandidatoDTO> listaCandidatos) {
-        for(BemDTO bemAux: listaCandidatos.get(0).getBens()){
-            Bem bem = new Bem();
-            bem.setOrdem(bemAux.getOrdem());
-            bem.setValor(bemAux.getValor());
-            bem.setDataUltimaAtualizacao(bemAux.getDataUltimaAtualizacao());
-            bem.setDescricao(bemAux.getDescricao());
-            bem.setDescricaoDeTipoDeBem(bemAux.getDescricaoDeTipoDeBem());
-            bemRepository.save(bem);
-        }
-
+    public void popularBanco(CandidatoDTO candidatoDTO) {
+        bancoService.salvarDadosCandidatos(candidatoDTO);
     }
 }
