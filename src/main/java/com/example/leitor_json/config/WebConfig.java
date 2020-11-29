@@ -1,4 +1,4 @@
-package com.example.leitor_json.configuracao;
+package com.example.leitor_json.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
